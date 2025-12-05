@@ -1,96 +1,346 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script defer src="/_vercel/insights/script.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
-    />
-    <title>Vercel HTML Star123ter</title>
-    <meta
-      name="description"
-      content="High-performance HTML based website template."
-    />
-  </head>
-  <body>
-    <h1>Vercel HTML Starter</h1>
-    <p>
-      This template is a simple, but powerful single
-      <code>index.html</code> file deployed to
-      <a href="https://vercel.com">Vercel</a>. When your site is deployed, all
-      static assets (like HTML, JavaScript, CSS, images, and more) are deployed
-      globally to every
-      <a href="https://vercel.com/docs/concepts/edge-network/overview"
-        >Vercel Edge Network</a
-      >
-      region.
-    </p>
-    <h2>Simple, privacy-friendly analytics</h2>
-    <p>
-      Want to understand your visitor traffic? Vercel Analytics gives you
-      first-party, privacy-friendly traffic analytics for your HTML site. This
-      template is already configured using the following script:
-    </p>
-    <pre><code>&lt;script defer src="/_vercel/insights/script.js"&gt;&lt;/script&gt;</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/analytics">Vercel Analytics</a>.
-    </p>
-    <h2>Integrated with git</h2>
-    <p>
-      Deploying updates to your site is as simple as
-      <code>git push</code> thanks to Vercel's advanced
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-      Support for GitHub, GitLab, Bitbucket is zero-configuration, and with the
-      flexible Vercel CLI and API, you can integrate with any tool possible.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-    </p>
-    <h2>Fast <code>gzip</code> compression</h2>
-    <p>
-      To help ensure the smallest possible file sizes for your static assets,
-      the Vercel Edge Network compresses files by default using
-      <code>gzip</code>. You can also optionally use
-      <code>brotli</code> compressesion if you prefer.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/edge-network/compression"
-        >compression</a
-      >.
-    </p>
-    <h2>Advanced routing configuration</h2>
-    <p>
-      Vercel gives you a variety of ways to configure the routing of your
-      website. For example, adding redirects, rewrites, or headers to your page.
-      While you can use <code>vercel.json</code> to define these through JSON,
-      you can also express your routing configuration as code using
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-    <p>
-      Middleware runs before the
-      <a href="https://vercel.com/docs/concepts/edge-network/caching"
-        >Vercel Edge Network Cache</a
-      >, so you can configure routing exactly as your application needs. For
-      example, this template uses <code>middleware.js</code> defined in the root
-      of the repository to add additional security headers to the site:
-    </p>
-    <pre><code>referrer-policy: origin-when-cross-origin
-strict-transport-security: max-age=31536000; includeSubDomains; preload
-x-content-type-options: nosniff
-x-dns-prefetch-control: on
-x-frame-options: DENY</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-  </body>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificado de Autenticidad - Daniel Cuadros</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #f9f9f7;
+            --card-bg: #ffffff;
+            --text-primary: #1a1a1a;
+            --text-secondary: #555555;
+            --accent-gold: #c5a059;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+            --font-signature: 'Great Vibes', cursive;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Contenedor Principal (Tarjeta) */
+        .certificate-container {
+            background-color: var(--card-bg);
+            width: 100%;
+            max-width: 1100px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: containerFadeIn 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        /* Sección de la Imagen */
+        .artwork-section {
+            background-color: #eaeaea;
+            position: relative;
+            overflow: hidden;
+            min-height: 500px;
+        }
+
+        .artwork-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.5s ease;
+            filter: grayscale(20%) contrast(110%);
+        }
+
+        .certificate-container:hover .artwork-section img {
+            transform: scale(1.03);
+            filter: grayscale(0%);
+        }
+
+        /* Sección de Texto */
+        .content-section {
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        /* Decoración de esquina */
+        .content-section::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 80px;
+            height: 80px;
+            border-top: 1px solid var(--accent-gold);
+            border-right: 1px solid var(--accent-gold);
+            opacity: 0;
+            animation: fadeIn 1s ease 1s forwards;
+        }
+
+        /* Tipografía y Jerarquía */
+        .header-overline {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            display: block;
+            opacity: 0;
+            animation: slideUp 0.8s ease 0.4s forwards;
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            opacity: 0;
+            animation: slideUp 0.8s ease 0.6s forwards;
+        }
+
+        h2.artist-name {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            opacity: 0;
+            animation: slideUp 0.8s ease 0.8s forwards;
+        }
+
+        .description {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            text-align: justify;
+            opacity: 0;
+            animation: slideUp 0.8s ease 1s forwards;
+        }
+
+        /* Grid de Detalles */
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: slideUp 0.8s ease 1.2s forwards;
+        }
+
+        .detail-item strong {
+            display: block;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            color: #999;
+            margin-bottom: 4px;
+        }
+
+        .detail-item span {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        /* Pie de página y Firma */
+        .footer-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: auto;
+            opacity: 0;
+            animation: fadeIn 1s ease 1.5s forwards;
+        }
+
+        .signature-block {
+            text-align: center;
+        }
+
+        .signature-img {
+            font-family: var(--font-signature);
+            font-size: 3rem;
+            color: var(--text-primary);
+            margin-bottom: -10px;
+            display: block;
+        }
+
+        .signature-line {
+            width: 100%;
+            height: 1px;
+            background-color: #ccc;
+            margin-top: 5px;
+        }
+
+        .signature-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            margin-top: 5px;
+            display: block;
+        }
+
+        .contact-info {
+            text-align: right;
+            font-size: 0.75rem;
+            color: #aaa;
+            line-height: 1.6;
+        }
+        
+        .contact-info a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-info a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Keyframes para Animaciones */
+        @keyframes containerFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 768px) {
+            .certificate-container {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+            
+            .artwork-section {
+                min-height: 300px;
+            }
+
+            .content-section {
+                padding: 40px 30px;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-section {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 30px;
+            }
+            
+            .contact-info {
+                text-align: left;
+            }
+        }
+
+        /* Estilos para impresión (si el cliente quiere imprimirlo) */
+        @media print {
+            body { background-color: white; }
+            .certificate-container { box-shadow: none; animation: none !important; opacity: 1 !important; transform: none !important; }
+            .content-section::before, .header-overline, h1, h2, .description, .details-grid, .footer-section { animation: none !important; opacity: 1 !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="certificate-container">
+        <div class="artwork-section">
+            <img src="https://images.unsplash.com/photo-1587317616053-91d4e0b04b58?q=80&w=1000&auto=format&fit=crop" alt="Reconstrucción - Daniel Cuadros">
+        </div>
+
+        <div class="content-section">
+            
+            <header>
+                <span class="header-overline">Certificado de Autenticidad</span>
+                <h1>RECONSTRUCCIÓN</h1>
+                <h2 class="artist-name">Daniel Cuadros</h2>
+            </header>
+
+            <div class="body-content">
+                <p class="description">
+                    Se certifica que esta es una obra original y única. Se trata de una 
+                    <strong>composición figurativa sobre madera prensada</strong>, intervenida con fragmentos 
+                    irregulares que conforman un relieve denso. La figura, delineada en 
+                    <strong>carboncillo</strong>, emerge integrada al entramado de piezas, destacando por 
+                    su tratamiento matérico y la tensión expresiva del conjunto.
+                    Pertenece a la colección exclusiva "PROPÓSITO".
+                </p>
+
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <strong>Fecha de Creación</strong>
+                        <span>24 de Octubre, 2025</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Dimensiones</strong>
+                        <span>136 cm x 186 cm</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Técnica & Material</strong>
+                        <span>Carboncillo sobre Madera</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Edición</strong>
+                        <span>Obra única (1/1)</span>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer-section">
+                <div class="signature-block">
+                    <span class="signature-img">Cuadros</span>
+                    <div class="signature-line"></div>
+                    <span class="signature-label">Firma del Artista</span>
+                </div>
+
+                <div class="contact-info">
+                    <p>www.danielcuadros.com</p>
+                    <p>contacto@danielcuadros.com</p>
+                    <p>ID: REF-2025-OCT-24</p>
+                </div>
+            </footer>
+
+        </div>
+    </main>
+
+</body>
 </html>
