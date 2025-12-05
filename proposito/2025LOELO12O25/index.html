@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificado de Autenticidad - Daniel Cuadros</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #f9f9f7;
+            --card-bg: #ffffff;
+            --text-primary: #1a1a1a;
+            --text-secondary: #555555;
+            --accent-gold: #c5a059;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+            --font-signature: 'Great Vibes', cursive;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        /* Contenedor Principal (Tarjeta) */
+        .certificate-container {
+            background-color: var(--card-bg);
+            width: 100%;
+            max-width: 1100px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            display: grid;
+            grid-template-columns: 45% 55%;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: containerFadeIn 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            position: relative;
+        }
+
+        /* Sección de la Imagen */
+        .artwork-section {
+            background-color: #eaeaea;
+            position: relative;
+            overflow: hidden;
+            /* Escritorio: llena la columna verticalmente */
+            height: 100%;
+            min-height: 500px;
+        }
+
+        .artwork-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* En escritorio cubre el espacio sin deformar */
+            display: block;
+            /* SIN FILTROS NI EFECTOS */
+        }
+
+        /* Sección de Texto */
+        .content-section {
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        /* Tipografía y Jerarquía */
+        .header-overline {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            display: block;
+            opacity: 0;
+            animation: slideUp 0.8s ease 0.4s forwards;
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            line-height: 1.1;
+            opacity: 0;
+            animation: slideUp 0.8s ease 0.6s forwards;
+        }
+
+        h2.artist-name {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            opacity: 0;
+            animation: slideUp 0.8s ease 0.8s forwards;
+        }
+
+        .description {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            text-align: justify;
+            opacity: 0;
+            animation: slideUp 0.8s ease 1s forwards;
+        }
+
+        /* Grid de Detalles */
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 50px;
+            opacity: 0;
+            animation: slideUp 0.8s ease 1.2s forwards;
+        }
+
+        .detail-item strong {
+            display: block;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            color: #999;
+            margin-bottom: 5px;
+        }
+
+        .detail-item span {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            display: block;
+        }
+
+        /* Pie de página y Firma */
+        .footer-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: auto;
+            opacity: 0;
+            animation: fadeIn 1s ease 1.5s forwards;
+        }
+
+        .signature-block {
+            text-align: center;
+        }
+
+        .signature-img {
+            font-family: var(--font-signature);
+            font-size: 3rem;
+            color: var(--text-primary);
+            margin-bottom: -10px;
+            display: block;
+            line-height: 1;
+        }
+
+        .signature-line {
+            width: 100%;
+            min-width: 150px;
+            height: 1px;
+            background-color: #ccc;
+            margin-top: 5px;
+        }
+
+        .signature-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            margin-top: 8px;
+            display: block;
+        }
+
+        .contact-info {
+            text-align: right;
+            font-size: 0.75rem;
+            color: #aaa;
+            line-height: 1.6;
+        }
+        
+        .contact-info a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-info a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Animaciones */
+        @keyframes containerFadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* =========================================
+           RESPONSIVE DESIGN
+           ========================================= */
+
+        /* TABLETS Y PANTALLAS MEDIANAS (< 968px) */
+        @media (max-width: 968px) {
+            .certificate-container {
+                grid-template-columns: 1fr; /* Una sola columna */
+                max-width: 600px;
+                border-radius: 4px;
+            }
+
+            .artwork-section {
+                /* AQUÍ ESTÁ EL CAMBIO: */
+                height: auto; /* Dejar que la altura sea natural */
+                min-height: auto;
+                width: 100%;
+                display: block;
+            }
+            
+            .artwork-section img {
+                width: 100%;
+                height: auto; /* Mantiene la proporción original sin recortar */
+                object-fit: contain; /* Asegura que se vea completa */
+            }
+
+            .content-section {
+                padding: 50px 40px;
+            }
+
+            .content-section::before {
+                display: none;
+            }
+        }
+
+        /* MÓVILES (< 600px) */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+                align-items: flex-start;
+            }
+
+            .certificate-container {
+                box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+            
+            /* Hereda la configuración de imagen de la Tablet (height: auto),
+               por lo que no se cortará tampoco en móvil. */
+
+            .content-section {
+                padding: 35px 25px;
+            }
+
+            h1 { font-size: 2rem; }
+            h2.artist-name { font-size: 1.3rem; margin-bottom: 20px; }
+            .description { font-size: 0.9rem; text-align: left; }
+
+            .details-grid {
+                grid-template-columns: 1fr; 
+                gap: 20px;
+                margin-bottom: 40px;
+            }
+
+            .detail-item {
+                border-bottom: 1px solid #f0f0f0;
+                padding-bottom: 10px;
+            }
+            .detail-item:last-child { border-bottom: none; }
+
+            .footer-section {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+
+            .signature-block {
+                order: 1;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-info {
+                order: 2;
+                text-align: center;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="certificate-container">
+        <div class="artwork-section">
+            <img src="obras/img/ssyo.jpg" alt="Reconstrucción - Daniel Cuadros">
+        </div>
+
+        <div class="content-section">
+            
+            <header>
+                <span class="header-overline">Certificado de Autenticidad</span>
+                <h1>LO OCULTO EN LO OBVIO</h1>
+                <h2 class="artist-name">Daniel Cuadros</h2>
+            </header>
+
+            <div class="body-content">
+                <p class="description">
+                    <strong>Composición figurativa realizada sobre 
+lámina galvanizada</strong>, trabajada en <strong>óleo</strong>
+mediante capas superpuestas de distinta
+densidad. La figura principal se resuelve 
+con aplicación de empastes controlados,
+acentos de luz definidos y bordes de 
+mayor precisión. El fondo y las figuras 
+secundarias se construyen con trazos 
+amplios, difuminados y de baja definición,
+generando contraste entre planos. 
+Se incorporan salpicaduras cromáticas
+aplicadas en etapa final para producir 
+variación superficial y ruptura del fondo 
+uniforme.
+                </p>
+
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <strong>Fecha de Creación</strong>
+                        <span>24 de Octubre, 2025</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Dimensiones</strong>
+                        <span>133 cm x 183 cm</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Técnica & Material</strong>
+                        <span>Óleo sobre lámina galvanizada</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Edición</strong>
+                        <span>Obra única (1/1)</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Dueño actual</strong>
+                        <span>Santiago Barragan</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Fecha de adquisición</strong>
+                        <span>5 de Diciembre, 2025</span>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer-section">
+                <div class="signature-block">
+                    <span class="signature-img"><img src="obras/img/sign.jpg" class="signature-img" alt="Firma" style="width: 180px; height: auto;"></span>
+                    <div class="signature-line"></div>
+                    <span class="signature-label">Firma del Artista</span>
+                </div>
+
+                <div class="contact-info">
+                    <p>www.danielcuadros.com</p>
+                    <p>contacto@danielcuadros.com</p>
+                    <p>ID: REF-2025SSYO24O25</p>
+                </div>
+            </footer>
+
+        </div>
+    </main>
+
+</body>
+</html>
